@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_roadmap_practice/screens/counter_service_screen.dart';
+import 'package:flutter_roadmap_practice/service/counter_service.dart';
 
-import 'dependency_injection/cubit/counter_cubit.dart';
-import 'dependency_injection/screens/counter_service_screen.dart';
-import 'dependency_injection/service/counter_service.dart';
+import 'cubit/counter_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,13 +19,9 @@ class MyApp extends StatelessWidget {
       create: (context) => CounterCubit(CounterService()),
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-        ),
+        theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
         home: CounterServiceScreen(),
       ),
     );
   }
 }
-
-
