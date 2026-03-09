@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../service/counter_service.dart';
 import 'counter_state.dart';
+import 'counter_state_factory.dart';
 
 class CounterCubit extends Cubit<CounterState> {
   final CounterService service;
@@ -11,21 +12,11 @@ class CounterCubit extends Cubit<CounterState> {
 
   void increment() {
     count = service.increment(count);
-
-    if (count >= 0) {
-      emit(CounterPositive(count)); //state change , observe blocbuilder
-    } else {
-      emit(CounterNegative(count)); //state change , observe blocbuilder
-    }
+    emit(CounterStateFactory.create(count)); //state change , observe blocbuilder
   }
 
   void decrement() {
     count = service.decrement(count);
-
-    if (count >= 0) {
-      emit(CounterPositive(count)); //state change , observe blocbuilder
-    } else {
-      emit(CounterNegative(count)); //state change , observe blocbuilder
-    }
+    emit(CounterStateFactory.create(count)); //state change , observe blocbuilder
   }
 }
