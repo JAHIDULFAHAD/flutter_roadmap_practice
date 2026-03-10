@@ -12,7 +12,7 @@ class CounterServiceScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Counter Service')),
       body: Center(
-        child: Column(
+        child: Column(  // Composite
           children: [
             BlocBuilder<CounterCubit, CounterState>(
               //Observer pattern
@@ -21,13 +21,13 @@ class CounterServiceScreen extends StatelessWidget {
                   return const Text('Start counting');
                 }
                 if (state is CounterPositive) {
-                  return Text(
+                  return Text( //Decorator
                     state.count.toString(),
                     style: const TextStyle(fontSize: 40),
                   );
                 }
                 if (state is CounterNegative) {
-                  return Text(
+                  return Text( //Decorator
                     state.count.toString(),
                     style: const TextStyle(fontSize: 40),
                   );
@@ -35,7 +35,7 @@ class CounterServiceScreen extends StatelessWidget {
                 return Container();
               },
             ),
-            Row(
+            Row(  //Composite
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton.icon(
